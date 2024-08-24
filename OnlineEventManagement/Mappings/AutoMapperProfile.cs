@@ -8,7 +8,8 @@ namespace OnlineEventManagement.Mappings
     {
         public AutoMapperProfile()
         {
-            CreateMap<Event, EventRequestDto>().ReverseMap();
+            CreateMap<Event, AddEventRequestDto>().ReverseMap();
+            CreateMap<Event,UpdateEventRequestDto>().ReverseMap();
         }
     }
 }
