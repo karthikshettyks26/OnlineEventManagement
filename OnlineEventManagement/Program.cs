@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddScoped<IEventRegisterRepository, EventRegisterRepository>();
+builder.Services.AddScoped<IFeedbackRepository,FeedbackRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

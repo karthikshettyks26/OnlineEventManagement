@@ -10,6 +10,7 @@ namespace OnlineEventManagement.Mappings
         {
             CreateMap<Event, AddEventRequestDto>().ReverseMap();
             CreateMap<Event,UpdateEventRequestDto>().ReverseMap();
+            CreateMap<Feedback,AddFeedbackRequestDto>().ReverseMap();
         }
     }
 }
