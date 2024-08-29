@@ -16,15 +16,15 @@ namespace OnlineEventManagement.Data
         {
             base.OnModelCreating(builder);
 
-            var particpantId = "e88ad7cf-da40-4a41-9c50-1faba05ee43a";
-            var adminId = "ae3f62bd-8f07-4f8e-8470-a56f7f42748a";
+            var participantId = "c24092c6-9d1c-4717-a7dd-1171c3be4c19";
+            var adminId = "8329416d-f8c6-482c-b886-7b8990eede18";
 
             var roles = new List<IdentityRole>
             {
                 new IdentityRole()
                 {
-                    Id = particpantId,
-                    ConcurrencyStamp = particpantId,
+                    Id = participantId,
+                    ConcurrencyStamp = participantId,
                     Name = "Participant",
                     NormalizedName = "Participant".ToUpper()
                 },

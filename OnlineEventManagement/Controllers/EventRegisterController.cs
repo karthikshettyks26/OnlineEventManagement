@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineEventManagement.Repositories;
+using System.Security.Claims;
 
 namespace OnlineEventManagement.Controllers
 {
@@ -19,11 +21,17 @@ namespace OnlineEventManagement.Controllers
         }
 
         [HttpPost]
+        [Route("{eventId:Guid}")]
+        [Authorize(Roles = "Admin,Participant")]
         //CREATE EVENT REGISTER
         public async Task<IActionResult> CreateEventRegister([FromRoute] Guid eventId)
         {
-            //ToDo - current user
-            Guid createdBy = Guid.NewGuid();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("Please include User Id in Authentication.");
+
+            Guid createdBy = Guid.Parse(userId);
             Guid? eventRegisterId = await eventRegisterRepository.AddEventRegisterAsync(eventId, createdBy);
 
             if(eventRegisterId == null)
